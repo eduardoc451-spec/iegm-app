@@ -492,7 +492,7 @@ def mostrar_formulario_educ():
         with st.container(key=f"container_bloco_ieduc_1_0_{ano_sel}", border=False):
             with st.expander(f"📌 Questão 1.0 • Oferta de Creche ({ano_sel})", expanded=True):
                 st.subheader("1.0 • Infraestrutura da Educação Infantil")
-                st.write("**1.0 A Prefeitura municipal oferece Creche?**")
+                st.write("**1.0 A Prefeitura municipal oferece Creche?1**")
                 st.caption("ℹ️ *O salvamento é automático. Qualquer alteração nas opções ou no link grava os dados na hora.*")
                 
                 opcoes10 = ["Selecione...", "Sim", "Não"]
