@@ -1029,7 +1029,7 @@ def mostrar_formulario_gov():
         # =============================================================================
         st.markdown('<div class="quesito-card">', unsafe_allow_html=True)
         st.subheader("QUESITO 1.0")
-        st.write("**A Prefeitura possui uma área ou setor que cuida de Tecnologia da Informação e Comunicação bvc (TIC)?**")
+        st.write("**A Prefeitura possui uma área ou setor que cuida de Tecnologia da Informação e Comunicação bgvc (TIC)?**")
         d10 = res_data.get("1.0", {"valor": None, "pontos": 0, "link": ""})
         opcoes10 = ["Sim – 30", "Não – 00"]
         idx10 = opcoes10.index(d10["valor"]) if d10["valor"] in opcoes10 else None
