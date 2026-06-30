@@ -1,17 +1,22 @@
 import streamlit as st
-
-st.write("MAIN.PY ESTÁ RODANDO")
-
-import streamlit as st
 import sys
 import os
 
-# garante caminho dos módulos
+# =========================
+# DEBUG (opcional)
+# =========================
+st.write("MAIN.PY ESTÁ RODANDO")
+
+# =========================
+# GARANTE CAMINHO DOS MÓDULOS
+# =========================
 current_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in locals() else os.getcwd()
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
-# import dos módulos
+# =========================
+# IMPORT DOS MÓDULOS
+# =========================
 import igov
 import icidade
 import iamb
@@ -21,47 +26,45 @@ import ieduc
 import isaude
 
 # =========================
-# MENU PRINCIPAL
+# MENU SIDEBAR
 # =========================
-
 st.sidebar.title("🛠️ Painel i-GOV TI")
 
 modulo = st.sidebar.selectbox(
     "Selecione o módulo",
     [
         "IGOV",
-        "Cidade",
-        "Ambiente",
-        "Fiscal",
-        "Planejamento",
-        "Educação",
-        "Saúde"
+        "ICIDADE",
+        "IAMB",
+        "IFISCAL",
+        "IPLAN",
+        "IEDUC",
+        "ISAUDE"
     ]
 )
 
 # =========================
-# ROTEAMENTO
+# ROTEAMENTO DOS MÓDULOS
 # =========================
-
 if modulo == "IGOV":
     igov.run()
 
-elif modulo == "Cidade":
+elif modulo == "ICIDADE":
     icidade.run()
 
-elif modulo == "Ambiente":
+elif modulo == "IAMB":
     iamb.run()
 
-elif modulo == "Fiscal":
+elif modulo == "IFISCAL":
     ifiscal.run()
 
-elif modulo == "Planejamento":
+elif modulo == "IPLAN":
     iplan.run()
 
-elif modulo == "Educação":
+elif modulo == "IEDUC":
     ieduc.run()
 
-elif modulo == "Saúde":
+elif modulo == "ISAUDE":
     isaude.run()
 
 # Configuração da página
