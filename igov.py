@@ -1,9 +1,10 @@
 import re
 import streamlit as st
-import sqlite3
 import json
 from io import BytesIO
 from datetime import datetime, date
+
+from db import conectar
 
 # =============================================================================
 # BIBLIOTECAS PARA O PDF (ReportLab)
