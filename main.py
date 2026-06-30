@@ -1,4 +1,8 @@
 import streamlit as st
+
+st.write("MAIN.PY ESTÁ RODANDO")
+
+import streamlit as st
 import sys
 import os
 
