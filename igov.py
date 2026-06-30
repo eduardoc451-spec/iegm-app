@@ -6,17 +6,13 @@ from datetime import datetime, date
 
 from db import conectar
 
-# =============================================================================
-# BIBLIOTECAS PARA O PDF (ReportLab)
-# =============================================================================
+# PDF (ReportLab)
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image, PageBreak
 
-# =============================================================================
-# BIBLIOTECAS PARA OS GRÁFICOS (Plotly)
-# =============================================================================
+# Gráficos (Plotly)
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
