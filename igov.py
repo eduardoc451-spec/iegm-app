@@ -6,32 +6,33 @@ from datetime import datetime, date
 
 from db import conectar
 
-st.title("i-Gov / IGOV System")
-
-if st.button("Testar conexão banco"):
-    conn = conectar()
-    cur = conn.cursor()
-
-    cur.execute("SELECT 1")
-    resultado = cur.fetchone()
-
-    st.success(f"Conexão OK: {resultado}")
-
-    cur.close()
-    conn.close()
-
-# =========================
-# RESTO DO SEU CÓDIGO ABAIXO
-# =========================
-
+# PDF (ReportLab)
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image, PageBreak
 
+# Gráficos (Plotly)
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
+
+
+def run():
+
+    st.title("i-Gov / IGOV System")
+
+    if st.button("Testar conexão banco"):
+        conn = conectar()
+        cur = conn.cursor()
+
+        cur.execute("SELECT 1")
+        resultado = cur.fetchone()
+
+        st.success(f"Conexão OK: {resultado}")
+
+        cur.close()
+        conn.close()
 
 # =============================================================================
 # CONSTANTES GLOBAIS
