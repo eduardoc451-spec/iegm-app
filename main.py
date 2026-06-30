@@ -3,27 +3,36 @@ import sys
 import os
 
 # =========================
-# DEBUG (opcional)
+# DEBUG
 # =========================
 st.write("MAIN.PY ESTÁ RODANDO")
 
 # =========================
-# GARANTE CAMINHO DOS MÓDULOS
+# CAMINHO DOS MÓDULOS
 # =========================
 current_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in locals() else os.getcwd()
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
 # =========================
-# IMPORT DOS MÓDULOS
+# IMPORT DINÂMICO (CORRIGIDO)
 # =========================
-import igov
-import icidade
-import iamb
-import ifiscal
-import iplan
-import ieduc
-import isaude
+def import_local_module(module_name):
+    try:
+        import importlib
+        if module_name in sys.modules:
+            return importlib.reload(sys.modules[module_name])
+        return importlib.import_module(module_name)
+    except Exception:
+        return None
+
+igov = import_local_module("igov")
+icidade = import_local_module("icidade_completo") or import_local_module("icidade")
+iamb = import_local_module("iamb")
+ifiscal = import_local_module("ifiscal")
+iplan = import_local_module("iplan")
+ieduc = import_local_module("ieduc")
+isaude = import_local_module("isaude")
 
 # =========================
 # MENU SIDEBAR
@@ -44,29 +53,28 @@ modulo = st.sidebar.selectbox(
 )
 
 # =========================
-# ROTEAMENTO DOS MÓDULOS
+# ROTEAMENTO
 # =========================
-if modulo == "IGOV":
+if modulo == "IGOV" and igov:
     igov.run()
 
-elif modulo == "ICIDADE":
+elif modulo == "ICIDADE" and icidade:
     icidade.run()
 
-elif modulo == "IAMB":
+elif modulo == "IAMB" and iamb:
     iamb.run()
 
-elif modulo == "IFISCAL":
+elif modulo == "IFISCAL" and ifiscal:
     ifiscal.run()
 
-elif modulo == "IPLAN":
+elif modulo == "IPLAN" and iplan:
     iplan.run()
 
-elif modulo == "IEDUC":
+elif modulo == "IEDUC" and ieduc:
     ieduc.run()
 
-elif modulo == "ISAUDE":
+elif modulo == "ISAUDE" and isaude:
     isaude.run()
-
 # Configuração da página
 st.set_page_config(
     page_title="IEG-M Francisco Morato",
