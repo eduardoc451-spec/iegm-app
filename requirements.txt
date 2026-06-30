@@ -5,3 +5,4 @@ reportlab
 python-dateutil
 numpy
 pillow
+psycopg2-binary
