@@ -4,6 +4,14 @@ from datetime import datetime
 import os
 import base64
 import sys
+import psycopg2
+
+def conectar():
+    return psycopg2.connect(
+        st.secrets["DATABASE_URL"]
+    )
+
+# restante do seu código...
 
 # Força o interpretador a enxergar a pasta atual para evitar erros de importação dos módulos locais
 current_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in locals() else os.getcwd()
