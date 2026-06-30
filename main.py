@@ -67,7 +67,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
 # FUNÇÃO: Converte a imagem local para Base64
 def get_image_base64(filename):
     full_path = os.path.join(current_dir, filename)
