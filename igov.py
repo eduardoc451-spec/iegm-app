@@ -1,3 +1,4 @@
+# IMPORTS (fica no topo)
 import re
 import streamlit as st
 import json
@@ -5,6 +6,26 @@ from io import BytesIO
 from datetime import datetime, date
 
 from db import conectar
+# ... resto dos imports
+
+# =====================================================
+# AQUI COMEÇA O APP
+# =====================================================
+
+st.title("i-Gov / IGOV System")
+
+# 👇 COLOCA O BOTÃO AQUI (PODE SER LOGO DEPOIS DO TITLE)
+if st.button("Testar conexão banco"):
+    conn = conectar()
+    cur = conn.cursor()
+
+    cur.execute("SELECT 1")
+    resultado = cur.fetchone()
+
+    st.success(f"Conexão OK: {resultado}")
+
+    cur.close()
+    conn.close()
 
 # PDF (ReportLab)
 from reportlab.lib.pagesizes import A4
