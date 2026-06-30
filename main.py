@@ -1,46 +1,64 @@
 import streamlit as st
-import pandas as pd
-from datetime import datetime
-import os
-import base64
 import sys
-import psycopg2
+import os
 
-def conectar():
-    return psycopg2.connect(
-        st.secrets["DATABASE_URL"]
-    )
-
-# restante do seu código...
-
-# Força o interpretador a enxergar a pasta atual para evitar erros de importação dos módulos locais
+# garante caminho dos módulos
 current_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in locals() else os.getcwd()
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
-# Importar módulos locais com tratamento de erros dinâmico
-def import_local_module(module_name):
-    try:
-        import importlib
-        if module_name in sys.modules:
-            return importlib.reload(sys.modules[module_name])
-        return importlib.import_module(module_name)
-    except Exception:
-        return None
+# import dos módulos
+import igov
+import icidade
+import iamb
+import ifiscal
+import iplan
+import ieduc
+import isaude
 
-icidade = import_local_module("icidade_completo") or import_local_module("icidade")
-igov = import_local_module("igov")
-iamb = import_local_module("iamb")
-ifiscal = import_local_module("ifiscal")
-iplan = import_local_module("iplan")
-ieduc = import_local_module("ieduc")
-isaude = import_local_module("isaude")
-iegm_final = import_local_module("iegmfinal") 
+# =========================
+# MENU PRINCIPAL
+# =========================
 
-# Novos módulos integrados
-bib_core = import_local_module("biblioteca")
-admin_core = import_local_module("administrador")
-atividade = import_local_module("atividade")
+st.sidebar.title("🛠️ Painel i-GOV TI")
+
+modulo = st.sidebar.selectbox(
+    "Selecione o módulo",
+    [
+        "IGOV",
+        "Cidade",
+        "Ambiente",
+        "Fiscal",
+        "Planejamento",
+        "Educação",
+        "Saúde"
+    ]
+)
+
+# =========================
+# ROTEAMENTO
+# =========================
+
+if modulo == "IGOV":
+    igov.run()
+
+elif modulo == "Cidade":
+    icidade.run()
+
+elif modulo == "Ambiente":
+    iamb.run()
+
+elif modulo == "Fiscal":
+    ifiscal.run()
+
+elif modulo == "Planejamento":
+    iplan.run()
+
+elif modulo == "Educação":
+    ieduc.run()
+
+elif modulo == "Saúde":
+    isaude.run()
 
 # Configuração da página
 st.set_page_config(
