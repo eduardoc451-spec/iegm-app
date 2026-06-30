@@ -6,10 +6,6 @@ from datetime import datetime, date
 
 from db import conectar
 
-# =========================
-# INÍCIO DO APP
-# =========================
-
 st.title("i-Gov / IGOV System")
 
 if st.button("Testar conexão banco"):
@@ -24,13 +20,15 @@ if st.button("Testar conexão banco"):
     cur.close()
     conn.close()
 
-# PDF (ReportLab)
+# =========================
+# RESTO DO SEU CÓDIGO ABAIXO
+# =========================
+
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, Image, PageBreak
 
-# Gráficos (Plotly)
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
